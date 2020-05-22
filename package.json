@@ -1,0 +1,30 @@
+{
+  "name": "mars",
+  "version": "0.0.0",
+  "description": "Mars is the fourth planet from the Sun and the second-smallest planet in the Solar System after Mercury. In English, Mars carries the name of the Roman god of war and is often referred to as the 'Red Planet'",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/expectNothin9/mars.git"
+  },
+  "keywords": [
+    "nextjs"
+  ],
+  "author": "expectNothin9",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/expectNothin9/mars/issues"
+  },
+  "homepage": "https://github.com/expectNothin9/mars#readme",
+  "dependencies": {
+    "next": "^9.4.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  }
+}
