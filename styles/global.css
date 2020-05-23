@@ -1,0 +1,10 @@
+@font-face {
+  font-family: ChelseaMarket;
+  src: url(/fonts/Chelsea_Market/ChelseaMarket-Regular.ttf);
+}
+
+:root {
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+}
