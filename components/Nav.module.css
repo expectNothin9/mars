@@ -1,8 +1,40 @@
 .nav {
   display: flex;
-  font-family: ChelseaMarket;
+  font-family: Lobster;
 }
 
 .nav a {
-  flex-grow: 0;
+  --nav-i-box: 1.5rem;
+  --nav-i: 1.25rem;
+  --nav-h: 2rem;
+  display: flex;
+  align-items: center;
+
+  color: var(--mono);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+}
+
+.nav a:hover {
+  border-color: var(--mono);
+}
+
+.nav a.active,
+.nav a.active:hover {
+  color: var(--mono-dark);
+  border-color: var(--mono-dark);
+}
+
+.nav a:not(:last-child) {
+  margin-right: var(--space-md);
+}
+
+.nav a i {
+  width: var(--nav-i-box);
+  height: var(--nav-i-box);
+  font-size: var(--nav-i);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: var(--space-sm);
 }

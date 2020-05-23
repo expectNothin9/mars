@@ -3,8 +3,26 @@
   src: url(/fonts/Chelsea_Market/ChelseaMarket-Regular.ttf);
 }
 
+@font-face {
+  font-family: Lobster;
+  src: url(/fonts/Lobster/Lobster-Regular.ttf);
+}
+
 :root {
+  --space-xs: 0.25rem;
   --space-sm: 0.5rem;
   --space-md: 1rem;
   --space-lg: 1.5rem;
+  --space-xl: 2rem;
+
+  --mono-min: #fff;
+  --mono-light: #e0e0e0;
+  --mono: #757575;
+  --mono-dark: #212121;
+}
+
+html,
+body,
+body > div {
+  height: 100%;
 }
