@@ -1,13 +1,18 @@
 import Head from "next/head";
 
+import CommonPage from "../components/CommonPage";
+import UH from "../components/UH";
+
 export default function Home() {
   return (
-    <div className="container">
+    <CommonPage>
       <Head>
         <title>AGEDLION</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>Home</main>
-    </div>
+      <div className="container">
+        <UH />
+        <main>Home</main>
+      </div>
+    </CommonPage>
   );
 }

@@ -1,0 +1,8 @@
+.nav {
+  display: flex;
+  font-family: ChelseaMarket;
+}
+
+.nav a {
+  flex-grow: 0;
+}
