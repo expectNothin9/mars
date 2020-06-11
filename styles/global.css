@@ -25,4 +25,12 @@ html,
 body,
 body > div {
   height: 100%;
+  color: var(--mono);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+h1,
+h2,
+figure {
+  margin: 0;
 }
