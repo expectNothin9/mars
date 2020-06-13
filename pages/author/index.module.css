@@ -89,36 +89,35 @@
   margin: auto;
 }
 
-.job-experience h2 {
-  margin: var(--space-md) 0;
-  padding: 0 var(--space-xl);
+.anchor-title {
+  padding: var(--space-md) var(--space-xl) var(--space-lg);
   font-family: Lobster;
 }
 
-.job-experience h2 a {
+.anchor-title a {
   position: relative;
   color: var(--mono);
   text-decoration: none;
   display: block;
 }
 
-.job-experience h2 a:hover {
+.anchor-title a:hover {
   text-decoration: underline;
 }
 
-.job-experience h2 a i {
+.anchor-title a i {
   position: absolute;
   left: calc(var(--space-xl) * -1);
   color: var(--mono-dark);
   visibility: hidden;
 }
 
-.job-experience h2:hover a i {
+.anchor-title:hover a i {
   visibility: visible;
 }
 
 .job-experience p {
-  margin: var(--space-lg) var(--space-xl);
+  margin: 0 var(--space-xl) var(--space-lg);
   padding-left: var(--space-lg);
   font-size: 1.25rem;
   color: var(--mono-dark);
@@ -128,4 +127,60 @@
 .job-experience p em {
   font-weight: bold;
   font-style: normal;
+}
+
+.skill-sets {
+  max-width: 40rem;
+  margin: auto;
+}
+
+.skill-sets ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.skill-sets ul li {
+  margin: 0;
+  padding-left: var(--space-xl);
+  font-size: 1.25rem;
+}
+
+.skill-sets h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: normal;
+  padding-left: var(--space-xl);
+  position: relative;
+}
+
+.skill-sets h3 i {
+  position: absolute;
+  left: 0;
+  color: var(--mono-dark);
+}
+
+.skill-sets p {
+  margin: var(--space-lg) 0 var(--space-lg) var(--space-xl);
+  padding-left: var(--space-lg);
+  border-left: 4px solid var(--mono-light);
+}
+
+.skill-sets p em {
+  font-style: normal;
+  font-weight: bold;
+  color: var(--mono-dark);
+}
+
+.skill-sets p span {
+  display: block;
+  margin: var(--space-sm) 0;
+  padding-left: var(--space-xl);
+  position: relative;
+}
+
+.skill-sets p span i {
+  position: absolute;
+  left: var(--space-sm);
+  color: var(--mono-light);
 }

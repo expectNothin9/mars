@@ -40,7 +40,7 @@ function Profile() {
 function JobExperience() {
   return (
     <section id="job-experience" className={styles["job-experience"]}>
-      <h2>
+      <h2 className={styles["anchor-title"]}>
         <a href="#job-experience">
           <FASIcon name="link" />
           Job Experience
@@ -59,6 +59,64 @@ function JobExperience() {
   );
 }
 
+function SkillSets() {
+  return (
+    <section id="skill-sets" className={styles["skill-sets"]}>
+      <h2 className={styles["anchor-title"]}>
+        <a href="#skill-sets">
+          <FASIcon name="link" />
+          Skill Sets
+        </a>
+      </h2>
+      <ul>
+        <li>
+          <h3>
+            <FASIcon name="star" />
+            Solid knowledge and techniques of web development
+          </h3>
+          <p>
+            Familiar to constructing website with <em>HTML5</em> semantic tags
+            and awesome style from <em>CSS3</em>.
+          </p>
+          <p>
+            More than 5 years experience on building <em>React</em> application.
+            Also skilled at <em>Redux</em> for the state/flow control.
+          </p>
+          <p>
+            Able to serving website via <em>Node.js</em> and experienced to
+            integrate with <em>RESTful API</em> or <em>GraphQL</em>.
+          </p>
+          <p>
+            Currently adopt <em>Next.js</em> (React framework) to take advantage
+            of its
+            <span>
+              <FASIcon name="angle-right" />
+              great <em>routing system</em>,
+            </span>
+            <span>
+              <FASIcon name="angle-right" />
+              server rendering approaches (<em>
+                server-side rendering
+              </em> and <em>static generation</em>),
+            </span>
+            <span>
+              <FASIcon name="angle-right" />
+              development environment (zero configuration for <em>
+                Babel
+              </em>{" "}
+              transpiling, <em>Webpack</em> bundling).
+            </span>
+          </p>
+          <p>
+            Use <em>Git</em> for version control and understand{" "}
+            <em>CI/CD workflow</em>.
+          </p>
+        </li>
+      </ul>
+    </section>
+  );
+}
+
 export default function Author() {
   return (
     <CommonPage>
@@ -69,6 +127,7 @@ export default function Author() {
       <main className={styles.author}>
         <Profile />
         <JobExperience />
+        <SkillSets />
       </main>
     </CommonPage>
   );
