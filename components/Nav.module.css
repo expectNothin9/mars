@@ -1,12 +1,14 @@
 .nav {
   display: flex;
   font-family: Lobster;
+  align-items: center;
 }
 
 .nav a {
   --nav-i-box: 1.5rem;
   --nav-i: 1.25rem;
   --nav-h: 2rem;
+  height: var(--nav-h);
   display: flex;
   align-items: center;
 
