@@ -108,7 +108,7 @@ function SkillSets() {
             </span>
           </p>
           <p>
-            Use <em>Git</em> for version control and understand{" "}
+            Use <em>Github</em> for version control and understand{" "}
             <em>CI/CD workflow</em>.
           </p>
         </li>

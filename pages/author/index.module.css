@@ -142,7 +142,7 @@
 
 .skill-sets ul li {
   margin: 0;
-  padding-left: var(--space-xl);
+  padding: 0 var(--space-xl);
   font-size: 1.25rem;
 }
 
