@@ -1,18 +1,7 @@
-import { ApolloServer, gql } from "apollo-server-micro";
+import { ApolloServer } from "apollo-server-micro";
 
-const typeDefs = gql`
-  type Query {
-    sayHello: String
-  }
-`;
-
-const resolvers = {
-  Query: {
-    sayHello: async (_, __, context) => {
-      return Promise.resolve("Hello World!");
-    },
-  },
-};
+import typeDefs from "../../gql/schema";
+import resolvers from "../../gql/resolvers";
 
 const apolloServer = new ApolloServer({ typeDefs, resolvers });
 const handler = apolloServer.createHandler({ path: "/api/graphql" });
