@@ -5,3 +5,5 @@ Mars is the fourth planet from the Sun and the second-smallest planet in the Sol
 ## resources
 
 - [Next.js](https://nextjs.org/): the React framework.
+- [Apollo](https://www.apollographql.com/docs/): the Apollo GraphQL platform
+- [apollo-server-micro](https://github.com/apollographql/apollo-server/tree/main/packages/apollo-server-micro): Basic GraphQL Microservice.
