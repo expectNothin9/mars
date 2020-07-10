@@ -1,4 +1,6 @@
 import Head from "next/head";
+import { useQuery } from "@apollo/react-hooks";
+import gql from "graphql-tag";
 
 import CommonPage from "../../components/CommonPage";
 import UH from "../../components/UH";
@@ -35,25 +37,35 @@ const Profile = () => (
   </section>
 );
 
-const JobExperience = () => (
-  <section id="job-experience" className={styles["job-experience"]}>
-    <h2 className={styles["anchor-title"]}>
-      <a href="#job-experience">
-        <FASIcon name="link" />
-        Job Experience
-      </a>
-    </h2>
-    <p>
-      I worked at <em>Verizon Media</em> (<em>Yahoo</em>) as a{" "}
-      <em>frontend engineer</em> since 2012. Over <em>7 years experience</em> on
-      developing and maintaining e-commerce web application.
-    </p>
-    <p>
-      Becoming a <em>tech lead</em> from 2019, taking responsibility of resource
-      and schedule management.
-    </p>
-  </section>
-);
+const GET_F2E_SINCE = gql`
+  query {
+    f2eSince
+  }
+`;
+
+const JobExperience = () => {
+  const { data } = useQuery(GET_F2E_SINCE);
+  return (
+    <section id="job-experience" className={styles["job-experience"]}>
+      <h2 className={styles["anchor-title"]}>
+        <a href="#job-experience">
+          <FASIcon name="link" />
+          Job Experience
+        </a>
+      </h2>
+      <p>
+        I worked at <em>Verizon Media</em> (<em>Yahoo</em>) as a{" "}
+        <em>frontend engineer</em> since {data?.f2eSince}. Over{" "}
+        <em>7 years experience</em> on developing and maintaining e-commerce web
+        application.
+      </p>
+      <p>
+        Becoming a <em>tech lead</em> from 2019, taking responsibility of
+        resource and schedule management.
+      </p>
+    </section>
+  );
+};
 
 const SkillSets = () => (
   <section id="skill-sets" className={styles["skill-sets"]}>
