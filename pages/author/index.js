@@ -55,7 +55,7 @@ const JobExperience = () => {
       </h2>
       <p>
         I worked at <em>Verizon Media</em> (<em>Yahoo</em>) as a{" "}
-        <em>frontend engineer</em> since {data?.f2eSince}. Over{" "}
+        <em>frontend engineer</em> since {data?.f2eSince || "----"}. Over{" "}
         <em>7 years experience</em> on developing and maintaining e-commerce web
         application.
       </p>
