@@ -1,6 +1,6 @@
 import gql from "graphql-tag";
 
-export default gql`
+export const typeDefs = gql`
   type Query {
     sayHello: String
   }

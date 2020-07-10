@@ -1,10 +1,8 @@
 import { ApolloServer } from "apollo-server-micro";
 
-import typeDefs from "../../gql/schema";
-import resolvers from "../../gql/resolvers";
+import { schema } from "../../apollo/schema";
 
-const apolloServer = new ApolloServer({ typeDefs, resolvers });
-const handler = apolloServer.createHandler({ path: "/api/graphql" });
+const apolloServer = new ApolloServer({ schema });
 
 // for next.js to leave body parser to apollo server
 export const config = {
@@ -13,4 +11,4 @@ export const config = {
   },
 };
 
-export default handler;
+export default apolloServer.createHandler({ path: "/api/graphql" });
