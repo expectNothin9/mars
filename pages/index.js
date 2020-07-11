@@ -67,6 +67,20 @@ const StyledHome = styled.main`
     justify-content: center;
     align-items: center;
   }
+
+  @media (max-width: 767px) {
+    h1 {
+      font-size: 3rem;
+    }
+    h1:after {
+      top: -0.75rem;
+    }
+    figure,
+    figure img {
+      width: 16rem;
+      height: 16rem;
+    }
+  }
 `;
 
 const HomeIndex = () => {
