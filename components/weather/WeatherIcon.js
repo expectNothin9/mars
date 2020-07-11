@@ -61,6 +61,15 @@ const StyledWeatherIcon = styled.div`
     font-size: 8rem;
     color: var(--mono-dark);
   }
+
+  @media (max-width: 767px) {
+    i {
+      width: 8rem;
+      height: 8rem;
+      line-height: 8rem;
+      font-size: 6rem;
+    }
+  }
 `;
 
 const WeatherIcon = ({ condition }) => {

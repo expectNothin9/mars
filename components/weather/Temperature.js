@@ -31,6 +31,19 @@ const StyleTemperature = styled.div`
     vertical-align: top;
     font-size: 3.5rem;
   }
+
+  @media (max-width: 767px) {
+    p.current em {
+      font-size: 3.75rem;
+      height: 3.75rem;
+      line-height: 3.75rem;
+    }
+    p.current span {
+      display: inline-block;
+      vertical-align: top;
+      font-size: 2rem;
+    }
+  }
 `;
 
 const Temperature = ({ current, highest, lowest }) => (
