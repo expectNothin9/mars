@@ -1,9 +1,49 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
+import styled from "styled-components";
 import clz from "classnames";
 
 import FASIcon from "./FASIcon";
-import styles from "./Nav.module.css";
+
+const StyledNav = styled.nav`
+  display: flex;
+  font-family: Lobster;
+  align-items: center;
+
+  a {
+    --nav-i-box: 1.5rem;
+    --nav-i: 1.25rem;
+    --nav-h: 2rem;
+    height: var(--nav-h);
+    display: flex;
+    align-items: center;
+
+    color: var(--mono);
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+  }
+  a:hover {
+    border-color: var(--mono);
+  }
+  a.active,
+  a.active:hover {
+    color: var(--mono-dark);
+    border-color: var(--mono-dark);
+  }
+  a:not(:last-child) {
+    margin-right: var(--space-md);
+  }
+
+  a i {
+    width: var(--nav-i-box);
+    height: var(--nav-i-box);
+    font-size: var(--nav-i);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: var(--space-sm);
+  }
+`;
 
 const navs = [
   { href: "/", icon: "home", text: "Home" },
@@ -13,19 +53,15 @@ const navs = [
 export default function Nav() {
   const router = useRouter();
   return (
-    <nav className={styles.nav}>
+    <StyledNav>
       {navs.map((nav) => (
         <Link href={nav.href} key={nav.text}>
-          <a
-            className={clz({
-              [styles.active]: router.pathname === nav.href,
-            })}
-          >
+          <a className={clz({ active: router.pathname === nav.href })}>
             <FASIcon name={nav.icon} />
             <span>{nav.text}</span>
           </a>
         </Link>
       ))}
-    </nav>
+    </StyledNav>
   );
 }
