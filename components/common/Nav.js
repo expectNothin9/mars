@@ -47,6 +47,7 @@ const StyledNav = styled.nav`
 
 const navs = [
   { href: "/", icon: "home", text: "Home" },
+  { href: "/weather", icon: "cloud-sun", text: "Weather" },
   { href: "/author", icon: "id-card", text: "Author" },
 ];
 

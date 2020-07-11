@@ -1,7 +1,16 @@
 export const resolvers = {
   Query: {
-    f2eSince: async (_parent, _args, _context, _info) => {
-      return Promise.resolve("2012");
+    weather: async (_parent, { location }, _context, _info) => {
+      return Promise.resolve({
+        location: location,
+        status: "bolt",
+        brief: "Thunderstorm",
+        temperature: {
+          current: 36,
+          highest: 37,
+          lowest: 29,
+        },
+      });
     },
   },
 };
