@@ -16,12 +16,13 @@ class WeatherAPI extends RESTDataSource {
 
     // TODO: move to weatherReducer.js
     const { timezone: tzOffset, weather, main } = resp;
-    let timezone = "Unknown/Unknown";
+    let timezone;
     switch (tzOffset) {
       case 28800:
         timezone = "Asia/Taipei";
+        break;
       default:
-        timezone = "Unknown/Unknown";
+        timezone = undefined;
     }
 
     return {

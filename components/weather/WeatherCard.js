@@ -58,7 +58,7 @@ const GET_WEATHER = gql`
 
 const defaultWeather = {
   location: "---",
-  timezone: "Unknown/Unknown",
+  timezone: undefined,
   condition: "question",
   brief: "unknown",
   temperature: {
