@@ -1,8 +1,8 @@
 import Head from "next/head";
 
-import CommonPage from "../components/CommonPage";
-import UH from "../components/UH";
-import FABIcon from "../components/FABIcon";
+import CommonPage from "../components/common/CommonPage";
+import UH from "../components/common/UH";
+import FABIcon from "../components/common/FABIcon";
 
 import styles from "./index.module.css";
 

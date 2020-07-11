@@ -2,11 +2,11 @@ import Head from "next/head";
 import { useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 
-import CommonPage from "../../components/CommonPage";
-import UH from "../../components/UH";
+import CommonPage from "../../components/common/CommonPage";
+import UH from "../../components/common/UH";
 
 import styles from "./index.module.css";
-import FASIcon from "../../components/FASIcon";
+import FASIcon from "../../components/common/FASIcon";
 
 const Profile = () => (
   <section className={styles.profile}>
