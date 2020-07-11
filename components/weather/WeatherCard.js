@@ -90,7 +90,7 @@ const WeatherCard = ({ location }) => {
           <Temperature
             current={weather.temperature.current}
             highest={weather.temperature.highest}
-            lowest={weather.temperature.highest}
+            lowest={weather.temperature.lowest}
           />
         </div>
       </div>
