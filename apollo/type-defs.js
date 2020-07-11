@@ -3,7 +3,8 @@ import gql from "graphql-tag";
 export const typeDefs = gql`
   type Weather {
     location: String!
-    status: String!
+    timezone: String!
+    condition: String!
     brief: String!
     temperature: Temperature!
   }

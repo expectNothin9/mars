@@ -3,9 +3,9 @@ import styled from "styled-components";
 import { useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 
-import FASIcon from "../common/FASIcon";
 import Loading from "../common/Loading";
 import WeatherCardHeader from "./WeatherCardHeader";
+import WeatherIcon from "./WeatherIcon";
 import Temperature from "./Temperature";
 
 const StyledWeatherCard = styled.section`
@@ -32,14 +32,6 @@ const StyledWeatherCard = styled.section`
   figcaption {
     display: none;
   }
-  figure i {
-    width: 10rem;
-    height: 10rem;
-    text-align: center;
-    line-height: 10rem;
-    font-size: 10rem;
-    color: var(--mono-dark);
-  }
   .brief {
     font-size: 1.25rem;
     font-weight: bold;
@@ -52,7 +44,8 @@ const GET_WEATHER = gql`
   query weather($location: String!) {
     weather(location: $location) {
       location
-      status
+      timezone
+      condition
       brief
       temperature {
         current
@@ -65,7 +58,8 @@ const GET_WEATHER = gql`
 
 const defaultWeather = {
   location: "---",
-  status: "question",
+  timezone: "Unknown/Unknown",
+  condition: "question",
   brief: "unknown",
   temperature: {
     current: 0,
@@ -79,11 +73,11 @@ const WeatherCard = ({ location }) => {
   const weather = data?.weather || defaultWeather;
   return (
     <StyledWeatherCard>
-      <WeatherCardHeader location={location} timezone="CST" />
+      <WeatherCardHeader location={location} timezone={weather.timezone} />
       <div className="weather-card-body">
         <figure>
           <figcaption>Current weather icon of {location}</figcaption>
-          <FASIcon name={weather.status} />
+          <WeatherIcon condition={weather.condition} />
         </figure>
         <div>
           <p className="brief">{weather.brief}</p>
