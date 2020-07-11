@@ -1,25 +1,88 @@
 import Head from "next/head";
+import styled from "styled-components";
 
 import CommonPage from "../components/common/CommonPage";
 import UH from "../components/common/UH";
 import FABIcon from "../components/common/FABIcon";
 
-import styles from "./index.module.css";
+const StyledHome = styled.main`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-export default function Home() {
+  h1 {
+    font-size: 5rem;
+    color: var(--mono-dark);
+    margin-top: 1rem;
+    position: relative;
+  }
+  h1:after {
+    content: "Since 2019";
+    position: absolute;
+    top: -0.5rem;
+    right: 0;
+    font-family: Lobster;
+    font-size: 1rem;
+  }
+  figure,
+  figure img {
+    width: 20rem;
+    height: 20rem;
+  }
+  figure figcaption {
+    display: none;
+  }
+  .social {
+    --social-i-box: 1.75rem;
+    --social-i: 1.25rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+  .social li:not(:last-child) {
+    margin-right: var(--space-md);
+  }
+  .social a {
+    display: block;
+    width: var(--social-i-box);
+    height: var(--social-i-box);
+    text-decoration: none;
+    background: var(--mono-light);
+    color: var(--mono);
+    border: 1px dashed var(--mono);
+    border-radius: 50%;
+  }
+  .social a:hover {
+    color: var(--mono-dark);
+    border-color: var(--mono-dark);
+  }
+  .social i {
+    width: var(--social-i-box);
+    height: var(--social-i-box);
+    font-size: var(--social-i);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+`;
+
+const HomeIndex = () => {
   return (
     <CommonPage>
       <Head>
         <title>AGEDLION</title>
       </Head>
       <UH />
-      <main className={styles.home}>
+      <StyledHome>
         <figure>
           <figcaption>AGEDLION Logo</figcaption>
           <img src="/images/agln/logo.jpg" alt="AGEDLION Logo" />
         </figure>
         <h1>AGEDLION</h1>
-        <ul className={styles.social}>
+        <ul className="social">
           <li>
             <a href="https://www.facebook.com/agedlion">
               <FABIcon name="facebook-f" />
@@ -31,7 +94,9 @@ export default function Home() {
             </a>
           </li>
         </ul>
-      </main>
+      </StyledHome>
     </CommonPage>
   );
-}
+};
+
+export default HomeIndex;
