@@ -27,7 +27,7 @@ const JobExperience = () => {
       <AnchorTitle title="Job Experience" hashId={hashId} />
       <p>
         I worked at <em>Verizon Media</em> (<em>Yahoo</em>) as a{" "}
-        <em>frontend engineer</em> since 2012. Over <em>7 years experience</em>{" "}
+        <em>frontend engineer</em> since 2012. Over <em>8 years experience</em>{" "}
         on developing and maintaining e-commerce web application.
       </p>
       <p>
