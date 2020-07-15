@@ -17,7 +17,6 @@ const StyledPrimaryInfo = styled.div`
     --role-i-box: 1.75rem;
     --role-i: 1.25rem;
     list-style: none;
-    margin: 0;
     padding: 0 0 var(--space-sm);
     margin: 0 var(--space-xl);
     border-bottom: 1px solid var(--mono-light);
@@ -40,6 +39,17 @@ const StyledPrimaryInfo = styled.div`
     justify-content: center;
     align-items: center;
     margin-right: var(--space-xs);
+  }
+
+  @media screen and (max-width: 767px) {
+    .role-list {
+      margin-top: var(--space-md);
+      flex-direction: column;
+      align-items: center;
+    }
+    .role-list li:not(:last-child) {
+      margin-right: 0;
+    }
   }
 `;
 
@@ -95,6 +105,12 @@ const StyledProfile = styled.section`
   }
   .avatar figcaption {
     display: none;
+  }
+  @media screen and (max-width: 767px) {
+    .banner {
+      border: none;
+      border-bottom: 1px solid var(--mono-light);
+    }
   }
 `;
 

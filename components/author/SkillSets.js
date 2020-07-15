@@ -51,6 +51,20 @@ const StyledSkillSets = styled.section`
     left: var(--space-sm);
     color: var(--mono-light);
   }
+
+  @media screen and (max-width: 767px) {
+    ul li {
+      padding: 0 var(--space-lg) var(--space-lg);
+    }
+    h3 i {
+      left: calc(-1 * var(--space-sm));
+    }
+    p {
+      margin: var(--space-md) 0 var(--space-md) var(--space-md);
+      padding-left: var(--space-lg);
+      border-left: 4px solid var(--mono-light);
+    }
+  }
 `;
 
 const SkillSets = () => {
