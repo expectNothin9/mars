@@ -30,6 +30,7 @@ const getCurrentTime = (timezone = "Asia/Taipei") => {
 
 const WeatherCardHeader = ({ location, timezone }) => {
   const [time, setTime] = useState(getCurrentTime(timezone));
+  // FIXME: Warning: Can't perform a React state update on an unmounted component.
   useEffect(() => {
     setInterval(() => {
       setTime(getCurrentTime(timezone));
