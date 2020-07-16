@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 import FASIcon from "../common/FASIcon";
+import { getCurrentTime } from "../../lib/momentUtil";
 
 const StyledCarrier = styled.div`
   width: 40%;
@@ -24,7 +25,16 @@ const StyledClock = styled.div`
   width: 20%;
   text-align: center;
 `;
-const Clock = () => <StyledClock>Clock</StyledClock>;
+const timeFormat = "h:mm A";
+const Clock = () => {
+  const [time, setTime] = useState(getCurrentTime(timeFormat));
+  useEffect(() => {
+    setTimeout(() => {
+      setTime(getCurrentTime(timeFormat));
+    }, 60 * 1000);
+  });
+  return <StyledClock>{time}</StyledClock>;
+};
 
 const StyledBattery = styled.div`
   width: 40%;

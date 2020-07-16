@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import moment from "moment-timezone";
 
 import FASIcon from "../common/FASIcon";
+import { getCurrentTime } from "../../lib/momentUtil";
 
 const StyledWeatherCardHeader = styled.header`
   text-align: center;
@@ -23,17 +23,13 @@ const StyledWeatherCardHeader = styled.header`
   }
 `;
 
-const getCurrentTime = (timezone = "Asia/Taipei") => {
-  const currentTime = moment();
-  return currentTime.tz(timezone).format("h:mm A z");
-};
-
+const timeFormat = "h:mm A z";
 const WeatherCardHeader = ({ location, timezone }) => {
-  const [time, setTime] = useState(getCurrentTime(timezone));
+  const [time, setTime] = useState(getCurrentTime(timeFormat, timezone));
   // FIXME: Warning: Can't perform a React state update on an unmounted component.
   useEffect(() => {
-    setInterval(() => {
-      setTime(getCurrentTime(timezone));
+    setTimeout(() => {
+      setTime(getCurrentTime(timeFormat, timezone));
     }, 60 * 1000);
   });
   return (
