@@ -17,7 +17,7 @@ const StyledLine = styled.main`
   display: flex;
   flex-direction: column;
 
-  --h-unit: 2.25rem;
+  --h-unit: 2.5rem;
 `;
 
 const Line = () => (
