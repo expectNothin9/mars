@@ -70,7 +70,6 @@ const StyledMessage = styled.li`
 `;
 const Message = ({ members, message }) => {
   const sender = members.find((member) => member.id === message.senderId);
-  console.log("Message sender", sender);
   return (
     <StyledMessage className={clz({ "is-self": sender.isSelf })}>
       <SenderAvatar sender={sender} />
@@ -89,15 +88,12 @@ const StyledMessageList = styled.ul`
   padding: 0;
 `;
 
-const MessageList = ({ members, messages }) => {
-  console.log("MessageList messages", messages);
-  return (
-    <StyledMessageList>
-      {messages.map((message) => (
-        <Message key={message.id} members={members} message={message} />
-      ))}
-    </StyledMessageList>
-  );
-};
+const MessageList = ({ members, messages }) => (
+  <StyledMessageList>
+    {messages.map((message) => (
+      <Message key={message.id} members={members} message={message} />
+    ))}
+  </StyledMessageList>
+);
 
 export default MessageList;

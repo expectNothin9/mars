@@ -53,7 +53,6 @@ const Line = () => {
   const { data } = useQuery(GET_CHATROOM, {
     variables: { chatroomId: "MOCKED" },
   });
-  console.log("GET_CHATROOM", data);
   const chatroom = data?.chatroom || defaultChatroom;
   const { subject, members, messages } = chatroom;
   return (
