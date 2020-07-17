@@ -43,10 +43,19 @@ const StyledChatroomSubject = styled.div`
   flex-grow: 1;
   font-size: 1.25rem;
   line-height: var(--h-unit);
+  display: flex;
+
+  p {
+    margin: 0;
+  }
+  span {
+    margin-left: var(--space-sm);
+  }
 `;
 const ChatroomSubject = ({ subject = "DEFAULT_SUBJECT", members = [] }) => (
   <StyledChatroomSubject>
-    {subject} ({members.length})
+    <p>{subject}</p>
+    {members.length > 2 && <span>({members.length})</span>}
   </StyledChatroomSubject>
 );
 

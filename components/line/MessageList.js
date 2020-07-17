@@ -23,7 +23,7 @@ const SenderAvatar = ({ sender }) => (
 const StyledSenderNickname = styled.div`
   font-size: 0.75rem;
   margin-left: var(--space-sm);
-  margin-bottom: var(--space-sm);
+  margin-bottom: var(--space-xs);
 `;
 const SenderNickname = ({ sender }) => (
   <StyledSenderNickname className="nickname">
