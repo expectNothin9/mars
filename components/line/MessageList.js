@@ -86,6 +86,11 @@ const StyledMessageList = styled.ul`
   flex-grow: 1;
   margin: 0;
   padding: 0;
+
+  /* directly overwrite space for consistent */
+  --space-xs: 0.125rem;
+  --space-sm: 0.25rem;
+  --space-md: 0.75rem;
 `;
 
 const MessageList = ({ members, messages }) => (

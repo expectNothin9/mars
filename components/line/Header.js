@@ -47,6 +47,7 @@ const StyledChatroomSubject = styled.div`
 
   p {
     margin: 0;
+    word-break: break-all;
   }
   span {
     margin-left: var(--space-sm);
