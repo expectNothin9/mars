@@ -39,25 +39,25 @@ const MenuButton = () => (
   </StyledButton>
 );
 
-const StyledChatroomTitle = styled.div`
+const StyledChatroomSubject = styled.div`
   flex-grow: 1;
   font-size: 1.25rem;
   line-height: var(--h-unit);
 `;
-const ChatroomTitle = ({ title = "Chatroom Title", memberCount = 9 }) => (
-  <StyledChatroomTitle>
-    {title} ({memberCount})
-  </StyledChatroomTitle>
+const ChatroomSubject = ({ subject = "DEFAULT_SUBJECT", members = [] }) => (
+  <StyledChatroomSubject>
+    {subject} ({members.length})
+  </StyledChatroomSubject>
 );
 
 const StyledHeader = styled.header`
   height: var(--h-unit);
   display: flex;
 `;
-const Header = () => (
+const Header = ({ subject = "DEFAULT_SUBJECT", members = [] }) => (
   <StyledHeader>
     <BackButton />
-    <ChatroomTitle />
+    <ChatroomSubject subject={subject} members={members} />
     <SearchButton />
     <DialButton />
     <MenuButton />
