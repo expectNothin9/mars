@@ -23,12 +23,14 @@ export const typeDefs = gql`
   type ChatroomMember {
     id: String!
     nickname: String!
+    isSelf: Boolean!
   }
   type Message {
     id: String!
     senderId: String!
     type: String!
     value: MessageValue!
+    sentTime: String! # ISO-8601 yyyy-MM-dd'T'HH:mm:ssZ
   }
   type MessageValue {
     content: String

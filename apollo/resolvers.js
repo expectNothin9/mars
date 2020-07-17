@@ -13,24 +13,40 @@ export const resolvers = {
           {
             id: "alice",
             nickname: "Alice",
+            isSelf: false,
           },
           {
             id: "bob",
             nickname: "Bob",
+            isSelf: true,
+          },
+          {
+            id: "chris",
+            nickname: "Chris",
+            isSelf: false,
           },
         ],
         messages: [
           {
             id: "0",
-            senderId: "Alice",
+            senderId: "alice",
             type: "text",
-            value: { content: "Hello." },
+            value: { content: "Hey, what's up." },
+            sentTime: "2020-07-17T07:58:55.529Z",
           },
           {
             id: "1",
-            senderId: "Bob",
+            senderId: "bob",
             type: "text",
             value: { content: "Hi, Alice." },
+            sentTime: "2020-07-17T07:59:19.267Z",
+          },
+          {
+            id: "2",
+            senderId: "chris",
+            type: "text",
+            value: { content: "Hello, Alice." },
+            sentTime: "2020-07-17T07:59:19.267Z",
           },
         ],
       });

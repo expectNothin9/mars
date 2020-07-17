@@ -29,6 +29,7 @@ const GET_CHATROOM = gql`
       members {
         id
         nickname
+        isSelf
       }
       messages {
         id
@@ -37,6 +38,7 @@ const GET_CHATROOM = gql`
         value {
           content
         }
+        sentTime
       }
     }
   }
