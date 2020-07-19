@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 
 import FASIcon from "../common/FASIcon";
+import { PopupModalContext } from "../common/PopupModal";
 
 const StyledButton = styled.button`
   width: calc(var(--h-unit) + 0.75rem);
@@ -53,12 +54,17 @@ const StyledChatroomSubject = styled.div`
     margin-left: var(--space-sm);
   }
 `;
-const ChatroomSubject = ({ subject = "DEFAULT_SUBJECT", members = [] }) => (
-  <StyledChatroomSubject>
-    <p>{subject}</p>
-    {members.length > 2 && <span>({members.length})</span>}
-  </StyledChatroomSubject>
-);
+const ChatroomSubject = ({ subject = "DEFAULT_SUBJECT", members = [] }) => {
+  const { setPopupModal } = useContext(PopupModalContext);
+  return (
+    <StyledChatroomSubject>
+      <p onClick={() => setPopupModal((state) => ({ ...state, active: true }))}>
+        {subject}
+      </p>
+      {members.length > 2 && <span>({members.length})</span>}
+    </StyledChatroomSubject>
+  );
+};
 
 const StyledHeader = styled.header`
   height: var(--h-unit);

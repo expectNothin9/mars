@@ -8,6 +8,7 @@ import Header from "./Header";
 import Announcement from "./Announcement";
 import MessageList from "./MessageList";
 import Footer from "./Footer";
+import PopupModalProvider from "../common/PopupModal";
 
 const StyledLine = styled.main`
   min-width: 20rem;
@@ -56,13 +57,15 @@ const Line = () => {
   const chatroom = data?.chatroom || defaultChatroom;
   const { subject, members, messages } = chatroom;
   return (
-    <StyledLine>
-      <SystemBar />
-      <Header subject={subject} members={members} />
-      <Announcement />
-      <MessageList members={members} messages={messages} />
-      <Footer />
-    </StyledLine>
+    <PopupModalProvider>
+      <StyledLine>
+        <SystemBar />
+        <Header subject={subject} members={members} />
+        <Announcement />
+        <MessageList members={members} messages={messages} />
+        <Footer />
+      </StyledLine>
+    </PopupModalProvider>
   );
 };
 
