@@ -1,6 +1,8 @@
 import gql from "graphql-tag";
 
 export const typeDefs = gql`
+  scalar JSON
+
   type Weather {
     location: String!
     timezone: String!
@@ -39,5 +41,10 @@ export const typeDefs = gql`
   type Query {
     weather(location: String!): Weather!
     chatroom(chatroomId: String!): Chatroom!
+    redis(key: String!): JSON
+  }
+
+  type Mutation {
+    setRedis(key: String!, value: String!): JSON
   }
 `;

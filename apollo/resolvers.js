@@ -1,4 +1,7 @@
+import GraphQLJSON from "graphql-type-json";
+
 export const resolvers = {
+  JSON: GraphQLJSON,
   Query: {
     weather: async (_parent, { location }, { dataSources }, _info) => {
       const weather = await dataSources.weatherAPI.getWeather({ location });
@@ -50,6 +53,16 @@ export const resolvers = {
           },
         ],
       });
+    },
+    redis: async (_parent, { key }, { dataSources }, _info) => {
+      const value = await dataSources.redisAPI.get(key);
+      return value;
+    },
+  },
+  Mutation: {
+    setRedis: async (_parent, { key, value }, { dataSources }, _info) => {
+      const resp = await dataSources.redisAPI.set(key, value);
+      return resp;
     },
   },
 };
