@@ -7,12 +7,17 @@ export const resolvers = {
       const weather = await dataSources.weatherAPI.getWeather({ location });
       return weather;
     },
-    chatroom: async (_parent, { chatroomId }, _context, _info) => {
+    chatroom: async (_parent, { chatroomId }, { dataSources }, _info) => {
       console.log(`resolve Query chatroom with chatroomId: ${chatroomId}`);
+      const [chatroom, members, messages] = await Promise.all([
+        dataSources.redisAPI.lineGet(chatroomId),
+        dataSources.redisAPI.lineGet(`${chatroomId}.members`),
+        dataSources.redisAPI.lineGet(`${chatroomId}.messages`),
+      ]);
       return Promise.resolve({
         id: chatroomId,
-        subject: "Chatroom Subject",
-        members: [
+        subject: chatroom?.subject || "Chatroom Subject",
+        members: members || [
           {
             id: "alice",
             nickname: "Alice",
@@ -29,20 +34,20 @@ export const resolvers = {
             isSelf: false,
           },
         ],
-        messages: [
+        messages: messages || [
           {
             id: "0",
             senderId: "alice",
             type: "text",
             value: { content: "Hey, what's up." },
-            sentTime: "2020-07-17T07:58:55.529Z",
+            sentTime: "2020-07-17T07:52:55.529Z",
           },
           {
             id: "1",
             senderId: "bob",
             type: "text",
             value: { content: "Hi, Alice." },
-            sentTime: "2020-07-17T07:59:19.267Z",
+            sentTime: "2020-07-17T07:53:19.267Z",
           },
           {
             id: "2",
@@ -58,10 +63,18 @@ export const resolvers = {
       const value = await dataSources.redisAPI.get(key);
       return value;
     },
+    lineRedis: async (_parent, { key }, { dataSources }, _info) => {
+      const value = await dataSources.redisAPI.lineGet(key);
+      return value;
+    },
   },
   Mutation: {
     setRedis: async (_parent, { key, value }, { dataSources }, _info) => {
       const resp = await dataSources.redisAPI.set(key, value);
+      return resp;
+    },
+    setLineRedis: async (_parent, { key, value }, { dataSources }, _info) => {
+      const resp = await dataSources.redisAPI.lineSet(key, value);
       return resp;
     },
   },

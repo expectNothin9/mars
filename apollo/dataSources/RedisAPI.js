@@ -31,6 +31,14 @@ class RedisAPI extends DataSource {
     }
     return resp;
   }
+
+  async lineGet(key) {
+    return await this.get(`line.${key}`);
+  }
+
+  async lineSet(key, value) {
+    return await this.set(`line.${key}`, value);
+  }
 }
 
 module.exports = RedisAPI;
