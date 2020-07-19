@@ -7,7 +7,7 @@ const StyledLoading = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  background: var(--background-mask);
+  background: var(--background-mask-light);
 `;
 
 const Loading = () => <StyledLoading />;

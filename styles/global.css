@@ -15,7 +15,8 @@
   --mono: #757575;
   --mono-dark: #212121;
 
-  --background-mask: rgba(255, 255, 255, 0.5);
+  --background-mask-light: rgba(255, 255, 255, 0.5);
+  --background-mask-dark: rgba(0, 0, 0, 0.5);
 }
 
 html,
