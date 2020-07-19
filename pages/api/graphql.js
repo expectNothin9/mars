@@ -2,7 +2,7 @@ import { ApolloServer } from "apollo-server-micro";
 
 import { schema } from "../../apollo/schema";
 import WeatherAPI from "../../apollo/dataSources/WeatherAPI";
-import RedisAPI from "../../apollo/dataSources/redisAPI";
+import RedisAPI from "../../apollo/dataSources/RedisAPI";
 
 const apolloServer = new ApolloServer({
   schema,
