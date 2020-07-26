@@ -4,6 +4,7 @@ import styled from "styled-components";
 import FASIcon from "../common/FASIcon";
 import { PopupModalContext } from "../common/PopupModal";
 import TextInputField from "../common/TextInputField";
+import { PrimaryButton, SecondaryButton } from "../common/Button";
 
 const StyledCloseButton = styled.button`
   position: absolute;
@@ -23,17 +24,11 @@ const StyledCloseButton = styled.button`
     line-height: var(--icon-unit);
   }
 `;
-const CloseButton = () => {
-  const { setPopupModal } = useContext(PopupModalContext);
-  const handleClosePopupModal = useCallback(() =>
-    setPopupModal({ active: false, content: null }, [setPopupModal])
-  );
-  return (
-    <StyledCloseButton type="button" onClick={handleClosePopupModal}>
-      <FASIcon name="times" />
-    </StyledCloseButton>
-  );
-};
+const CloseButton = ({ handleOnClick }) => (
+  <StyledCloseButton type="button" onClick={handleOnClick}>
+    <FASIcon name="times" />
+  </StyledCloseButton>
+);
 
 const StyledEditChatroomSubjectForm = styled.form`
   padding: var(--space-lg);
@@ -44,9 +39,16 @@ const StyledEditChatroomSubjectForm = styled.form`
     margin: 0;
     font-size: 1.25rem;
   }
-
   & > div {
     padding: var(--space-md) 0;
+  }
+  footer {
+    display: flex;
+    flex-direction: row-reverse;
+
+    button {
+      margin-left: var(--space-sm);
+    }
   }
 
   @media screen and (max-width: 767px) {
@@ -62,9 +64,16 @@ const EditChatroomSubjectForm = ({ subject }) => {
     },
     [setForm]
   );
+  const { setPopupModal } = useContext(PopupModalContext);
+  const handleSaveSubject = useCallback(() =>
+    setPopupModal({ active: false, content: null }, [setPopupModal])
+  );
+  const handleClosePopupModal = useCallback(() =>
+    setPopupModal({ active: false, content: null }, [setPopupModal])
+  );
   return (
     <StyledEditChatroomSubjectForm>
-      <CloseButton />
+      <CloseButton handleOnClick={handleClosePopupModal} />
       <header>Edit</header>
       <div>
         <TextInputField
@@ -73,6 +82,10 @@ const EditChatroomSubjectForm = ({ subject }) => {
           handleOnChange={handleChangeSubject}
         />
       </div>
+      <footer>
+        <PrimaryButton text="Save" handleOnClick={handleSaveSubject} />
+        <SecondaryButton text="Cancel" handleOnClick={handleClosePopupModal} />
+      </footer>
     </StyledEditChatroomSubjectForm>
   );
 };

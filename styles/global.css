@@ -18,6 +18,13 @@
   --txt-primary: #212121;
   --txt-secondary: #757575;
 
+  --btn-primary-txt: #fff;
+  --btn-primary-bdr: #212121;
+  --btn-primary-bg: #212121;
+  --btn-secondary-txt: #757575;
+  --btn-secondary-bdr: #757575;
+  --btn-secondary-bg: #fff;
+
   --background-mask-light: rgba(255, 255, 255, 0.5);
   --background-mask-dark: rgba(0, 0, 0, 0.5);
 }
