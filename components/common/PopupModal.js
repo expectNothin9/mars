@@ -16,12 +16,12 @@ const StyledPopupModal = styled.section`
   }
 
   .popup-modal {
-    width: 15rem;
     background: var(--mono-min);
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    border-radius: var(--space-sm);
   }
 `;
 
@@ -30,19 +30,14 @@ const PopupModal = () => {
   const { popupModal } = useContext(PopupModalContext);
   return (
     <StyledPopupModal className={clz({ active: popupModal.active })}>
-      <div className="popup-modal">
-        <header>{popupModal.title}</header>
-        <div>{popupModal.content}</div>
-        <footer>Footer</footer>
-      </div>
+      <div className="popup-modal">{popupModal.content}</div>
     </StyledPopupModal>
   );
 };
 
 const POPUP_MODAL = {
   active: false,
-  title: "Header",
-  content: "Content",
+  content: "Popup Modal Content",
 };
 const PopupModalProvider = ({ children }) => {
   const [popupModal, setPopupModal] = useState(POPUP_MODAL);
