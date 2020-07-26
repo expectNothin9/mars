@@ -61,7 +61,10 @@ const ChatroomSubject = ({ subject = "DEFAULT_SUBJECT", members = [] }) => {
     <StyledChatroomSubject>
       <p
         onClick={() =>
-          setPopupModal({ active: true, content: <EditChatroomSubjectForm /> })
+          setPopupModal({
+            active: true,
+            content: <EditChatroomSubjectForm subject={subject} />,
+          })
         }
       >
         {subject}

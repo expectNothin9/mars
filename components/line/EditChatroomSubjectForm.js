@@ -1,31 +1,9 @@
-import React, { useContext, useCallback } from "react";
+import React, { useContext, useCallback, useState } from "react";
 import styled from "styled-components";
 
 import FASIcon from "../common/FASIcon";
 import { PopupModalContext } from "../common/PopupModal";
-
-const StyledTextInputField = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  label {
-    font-size: 1rem;
-    margin-bottom: var(--space-sm);
-  }
-  input {
-    border: 3px solid var(--mono-light);
-    border-radius: var(--space-sm);
-    padding: var(--space-sm) var(--space-md);
-    font-size: 1.25rem;
-    color: var(--txt-primary);
-  }
-`;
-const TextInputField = ({ id, value }) => (
-  <StyledTextInputField>
-    <label htmlFor={id}>Chatroom subject</label>
-    <input id={id} type="text" value={value} onChange={console.log} />
-  </StyledTextInputField>
-);
+import TextInputField from "../common/TextInputField";
 
 const StyledCloseButton = styled.button`
   position: absolute;
@@ -75,14 +53,28 @@ const StyledEditChatroomSubjectForm = styled.form`
     max-width: 15rem;
   }
 `;
-const EditChatroomSubjectForm = ({ subject }) => (
-  <StyledEditChatroomSubjectForm>
-    <CloseButton />
-    <header>Edit</header>
-    <div>
-      <TextInputField id="chatroom-subject" value={subject} />
-    </div>
-  </StyledEditChatroomSubjectForm>
-);
+const EditChatroomSubjectForm = ({ subject }) => {
+  const [form, setForm] = useState({ subject });
+  const handleChangeSubject = useCallback(
+    (event) => {
+      const input = event.target;
+      setForm({ subject: input.value });
+    },
+    [setForm]
+  );
+  return (
+    <StyledEditChatroomSubjectForm>
+      <CloseButton />
+      <header>Edit</header>
+      <div>
+        <TextInputField
+          id="chatroom-subject"
+          value={form.subject}
+          handleOnChange={handleChangeSubject}
+        />
+      </div>
+    </StyledEditChatroomSubjectForm>
+  );
+};
 
 export default EditChatroomSubjectForm;
