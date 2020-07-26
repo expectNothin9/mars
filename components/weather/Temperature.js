@@ -17,7 +17,7 @@ const StyleTemperature = styled.div`
   p.current {
     display: block;
     margin-top: var(--space-sm);
-    color: var(--mono-dark);
+    color: var(--txt-primary);
   }
   p.current em {
     display: inline-block;

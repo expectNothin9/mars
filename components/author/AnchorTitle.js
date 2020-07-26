@@ -9,7 +9,7 @@ const StyledAnchorTitle = styled.h2`
 
   a {
     position: relative;
-    color: var(--mono);
+    color: var(--txt-secondary);
     text-decoration: none;
     display: block;
   }

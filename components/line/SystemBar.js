@@ -58,7 +58,7 @@ const StyledSystemBar = styled.section`
   height: var(--h-unit);
   font-size: 0.75rem;
   line-height: var(--h-unit);
-  color: var(--mono-dark);
+  color: var(--txt-primary);
   display: flex;
 `;
 const SystemBar = () => (

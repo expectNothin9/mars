@@ -17,7 +17,7 @@ const StyledTextInputField = styled.div`
     border-radius: var(--space-sm);
     padding: var(--space-sm) var(--space-md);
     font-size: 1.25rem;
-    color: var(--mono-dark);
+    color: var(--txt-primary);
   }
 `;
 const TextInputField = ({ id, value }) => (

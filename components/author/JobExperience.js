@@ -11,7 +11,7 @@ const StyledJobExperience = styled.section`
     margin: 0 var(--space-xl) var(--space-lg);
     padding-left: var(--space-lg);
     font-size: 1.25rem;
-    color: var(--mono-dark);
+    color: var(--txt-primary);
     border-left: 4px solid var(--mono-light);
   }
   p em {

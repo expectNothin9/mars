@@ -35,7 +35,7 @@ const StyledWeatherCard = styled.section`
   .brief {
     font-size: 1.25rem;
     font-weight: bold;
-    color: var(--mono-dark);
+    color: var(--txt-primary);
     margin: 0;
   }
 `;

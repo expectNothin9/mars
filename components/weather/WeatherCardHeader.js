@@ -10,7 +10,7 @@ const StyledWeatherCardHeader = styled.header`
 
   h2 {
     font-size: 1.25rem;
-    color: var(--mono-dark);
+    color: var(--txt-primary);
   }
   h2 i {
     margin-right: var(--space-sm);

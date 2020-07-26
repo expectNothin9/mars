@@ -18,7 +18,7 @@ const StyledNav = styled.nav`
     display: flex;
     align-items: center;
 
-    color: var(--mono);
+    color: var(--txt-secondary);
     text-decoration: none;
     border-bottom: 2px solid transparent;
   }
@@ -27,7 +27,7 @@ const StyledNav = styled.nav`
   }
   a.active,
   a.active:hover {
-    color: var(--mono-dark);
+    color: var(--txt-primary);
     border-color: var(--mono-dark);
   }
   a:not(:last-child) {

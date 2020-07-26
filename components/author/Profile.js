@@ -9,7 +9,7 @@ const StyledPrimaryInfo = styled.div`
   h1 {
     padding: var(--space-sm) 0;
     font-family: Lobster;
-    color: var(--mono-dark);
+    color: var(--txt-primary);
     font-size: 2.5rem;
     text-align: center;
   }

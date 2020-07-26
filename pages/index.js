@@ -14,7 +14,7 @@ const StyledHome = styled.main`
 
   h1 {
     font-size: 5rem;
-    color: var(--mono-dark);
+    color: var(--txt-primary);
     margin-top: 1rem;
     position: relative;
   }
@@ -51,12 +51,12 @@ const StyledHome = styled.main`
     height: var(--social-i-box);
     text-decoration: none;
     background: var(--mono-light);
-    color: var(--mono);
+    color: var(--txt-secondary);
     border: 1px dashed var(--mono);
     border-radius: 50%;
   }
   .social a:hover {
-    color: var(--mono-dark);
+    color: var(--txt-primary);
     border-color: var(--mono-dark);
   }
   .social i {

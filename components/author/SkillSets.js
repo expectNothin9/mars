@@ -38,7 +38,7 @@ const StyledSkillSets = styled.section`
   p em {
     font-style: normal;
     font-weight: bold;
-    color: var(--mono-dark);
+    color: var(--txt-primary);
   }
   p span {
     display: block;
