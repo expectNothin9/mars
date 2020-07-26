@@ -52,7 +52,7 @@ const defaultChatroom = {
 };
 const Line = () => {
   const { data } = useQuery(GET_CHATROOM, {
-    variables: { chatroomId: "DEFAULT" },
+    variables: { chatroomId: "DEFAULT_ID" },
   });
   const chatroom = data?.chatroom || defaultChatroom;
   const { subject, members, messages } = chatroom;

@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import FASIcon from "../common/FASIcon";
 import { PopupModalContext } from "../common/PopupModal";
+import EditChatroomSubjectForm from "./EditChatroomSubjectForm";
 
 const StyledButton = styled.button`
   width: calc(var(--h-unit) + 0.75rem);
@@ -58,7 +59,11 @@ const ChatroomSubject = ({ subject = "DEFAULT_SUBJECT", members = [] }) => {
   const { setPopupModal } = useContext(PopupModalContext);
   return (
     <StyledChatroomSubject>
-      <p onClick={() => setPopupModal((state) => ({ ...state, active: true }))}>
+      <p
+        onClick={() =>
+          setPopupModal({ active: true, content: <EditChatroomSubjectForm /> })
+        }
+      >
         {subject}
       </p>
       {members.length > 2 && <span>({members.length})</span>}
