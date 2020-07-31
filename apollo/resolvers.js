@@ -10,9 +10,9 @@ export const resolvers = {
     chatroom: async (_parent, { chatroomId }, { dataSources }, _info) => {
       console.log(`resolve Query chatroom with chatroomId: ${chatroomId}`);
       const [chatroom, members, messages] = await Promise.all([
-        dataSources.redisAPI.lineGet(chatroomId),
-        dataSources.redisAPI.lineGet(`${chatroomId}.members`),
-        dataSources.redisAPI.lineGet(`${chatroomId}.messages`),
+        dataSources.redisAPI.lineGetChatroom(chatroomId),
+        dataSources.redisAPI.lineGetChatroomMembers(`${chatroomId}.members`),
+        dataSources.redisAPI.lineGetChatroomMessages(`${chatroomId}.messages`),
       ]);
       return Promise.resolve({
         id: chatroomId,
@@ -63,18 +63,27 @@ export const resolvers = {
       const value = await dataSources.redisAPI.get(key);
       return value;
     },
-    lineRedis: async (_parent, { key }, { dataSources }, _info) => {
-      const value = await dataSources.redisAPI.lineGet(key);
-      return value;
-    },
   },
   Mutation: {
+    saveChatroomSubject: async (
+      _parent,
+      { chatroomId, subject },
+      { dataSources },
+      _info
+    ) => {
+      let chatroom = await dataSources.redisAPI.lineGetChatroom(chatroomId);
+      if (!chatroom) {
+        chatroom = { id: chatroomId };
+      }
+      chatroom.subject = subject;
+      const resp = await dataSources.redisAPI.lineSetChatroom(
+        chatroomId,
+        chatroom
+      );
+      return resp.error ? resp : { chatroomId, subject };
+    },
     setRedis: async (_parent, { key, value }, { dataSources }, _info) => {
       const resp = await dataSources.redisAPI.set(key, value);
-      return resp;
-    },
-    setLineRedis: async (_parent, { key, value }, { dataSources }, _info) => {
-      const resp = await dataSources.redisAPI.lineSet(key, value);
       return resp;
     },
   },

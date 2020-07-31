@@ -42,11 +42,24 @@ export const typeDefs = gql`
     weather(location: String!): Weather!
     chatroom(chatroomId: String!): Chatroom!
     redis(key: String!): JSON
-    lineRedis(key: String!): JSON
+  }
+
+  type Error {
+    code: Int!
+    message: String!
+  }
+
+  type SaveChatroomSubjectResponse {
+    chatroomId: String!
+    subject: String
+    error: Error
   }
 
   type Mutation {
+    saveChatroomSubject(
+      chatroomId: String!
+      subject: String!
+    ): SaveChatroomSubjectResponse!
     setRedis(key: String!, value: String!): JSON
-    setLineRedis(key: String!, value: String!): JSON
   }
 `;

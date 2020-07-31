@@ -1,5 +1,7 @@
 import React, { useContext, useCallback, useState } from "react";
 import styled from "styled-components";
+import gql from "graphql-tag";
+import { useMutation } from "@apollo/react-hooks";
 
 import FASIcon from "../common/FASIcon";
 import { PopupModalContext } from "../common/PopupModal";
@@ -55,8 +57,33 @@ const StyledEditChatroomSubjectForm = styled.form`
     max-width: 15rem;
   }
 `;
-const EditChatroomSubjectForm = ({ subject }) => {
+const SAVE_CHATROOM_SUBJECT = gql`
+  mutation saveChatroomSubject($chatroomId: String!, $subject: String!) {
+    saveChatroomSubject(chatroomId: $chatroomId, subject: $subject) {
+      chatroomId
+      subject
+      error {
+        code
+        message
+      }
+    }
+  }
+`;
+const EditChatroomSubjectForm = ({ chatroomId, subject }) => {
   const [form, setForm] = useState({ subject });
+  const { setPopupModal } = useContext(PopupModalContext);
+  // TODO: loading style
+  // TODO: move handleSaveSubject to upper scope for changing <ChatroomSubject />
+  const [saveChatroomSubject] = useMutation(SAVE_CHATROOM_SUBJECT, {
+    variables: {
+      chatroomId,
+      subject: form.subject,
+    },
+    onCompleted: (mutationData) => {
+      setForm({ subject: mutationData.saveChatroomSubject.subject });
+      setPopupModal({ active: false, content: null });
+    },
+  });
   const handleChangeSubject = useCallback(
     (event) => {
       const input = event.target;
@@ -64,12 +91,12 @@ const EditChatroomSubjectForm = ({ subject }) => {
     },
     [setForm]
   );
-  const { setPopupModal } = useContext(PopupModalContext);
-  const handleSaveSubject = useCallback(() =>
-    setPopupModal({ active: false, content: null }, [setPopupModal])
-  );
-  const handleClosePopupModal = useCallback(() =>
-    setPopupModal({ active: false, content: null }, [setPopupModal])
+  const handleSaveSubject = useCallback(() => saveChatroomSubject(), [
+    saveChatroomSubject,
+  ]);
+  const handleClosePopupModal = useCallback(
+    () => setPopupModal({ active: false, content: null }),
+    [setPopupModal]
   );
   return (
     <StyledEditChatroomSubjectForm>

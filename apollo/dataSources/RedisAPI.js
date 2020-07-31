@@ -1,6 +1,11 @@
 const { DataSource } = require("apollo-datasource");
 const Redis = require("ioredis");
 
+const UNEXPECTED_SYSTEM_ERROR = {
+  code: 999999,
+  message: "UNEXPECTED_SYSTEM_ERROR",
+};
+
 const REDIS_URL = process.env.REDIS_URL;
 const redis = new Redis(REDIS_URL);
 
@@ -36,8 +41,30 @@ class RedisAPI extends DataSource {
     return await this.get(`line.${key}`);
   }
 
+  async lineGetChatroom(chatroomId) {
+    const resp = await this.lineGet(chatroomId);
+    return JSON.parse(resp);
+  }
+
+  async lineGetChatroomMembers(chatroomId) {
+    const resp = await this.lineGet(`${chatroomId}.members`);
+    return JSON.parse(resp);
+  }
+
+  async lineGetChatroomMessages(chatroomId) {
+    const resp = await this.lineGet(`${chatroomId}.messages`);
+    return JSON.parse(resp);
+  }
+
   async lineSet(key, value) {
     return await this.set(`line.${key}`, value);
+  }
+
+  async lineSetChatroom(chatroomId, chatroom) {
+    const resp = await this.lineSet(chatroomId, JSON.stringify(chatroom));
+    return resp === "OK"
+      ? { chatroomId, chatroom }
+      : { chatroomId, error: UNEXPECTED_SYSTEM_ERROR };
   }
 }
 

@@ -55,7 +55,11 @@ const StyledChatroomSubject = styled.div`
     margin-left: var(--space-sm);
   }
 `;
-const ChatroomSubject = ({ subject = "DEFAULT_SUBJECT", members = [] }) => {
+const ChatroomSubject = ({
+  chatroomId = "DEFAULT_CHATROOM_ID",
+  subject = "DEFAULT_SUBJECT",
+  members = [],
+}) => {
   const { setPopupModal } = useContext(PopupModalContext);
   return (
     <StyledChatroomSubject>
@@ -63,7 +67,12 @@ const ChatroomSubject = ({ subject = "DEFAULT_SUBJECT", members = [] }) => {
         onClick={() =>
           setPopupModal({
             active: true,
-            content: <EditChatroomSubjectForm subject={subject} />,
+            content: (
+              <EditChatroomSubjectForm
+                chatroomId={chatroomId}
+                subject={subject}
+              />
+            ),
           })
         }
       >
@@ -78,10 +87,18 @@ const StyledHeader = styled.header`
   height: var(--h-unit);
   display: flex;
 `;
-const Header = ({ subject = "DEFAULT_SUBJECT", members = [] }) => (
+const Header = ({
+  chatroomId = "DEFAULT_CHATROOM_ID",
+  subject = "DEFAULT_SUBJECT",
+  members = [],
+}) => (
   <StyledHeader>
     <BackButton />
-    <ChatroomSubject subject={subject} members={members} />
+    <ChatroomSubject
+      chatroomId={chatroomId}
+      subject={subject}
+      members={members}
+    />
     <SearchButton />
     <DialButton />
     <MenuButton />

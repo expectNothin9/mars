@@ -55,12 +55,12 @@ const Line = () => {
     variables: { chatroomId: "DEFAULT_ID" },
   });
   const chatroom = data?.chatroom || defaultChatroom;
-  const { subject, members, messages } = chatroom;
+  const { id, subject, members, messages } = chatroom;
   return (
     <PopupModalProvider>
       <StyledLine>
         <SystemBar />
-        <Header subject={subject} members={members} />
+        <Header chatroomId={id} subject={subject} members={members} />
         <Announcement />
         <MessageList members={members} messages={messages} />
         <Footer />
