@@ -1,8 +1,24 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 import clz from "classnames";
 
 import { formatTime } from "../../lib/momentUtil";
+
+const MEMBER_PROP_TYPES = PropTypes.shape({
+  id: PropTypes.string.isRequired,
+  nickname: PropTypes.string.isRequired,
+  isSelf: PropTypes.bool.isRequired,
+});
+const MEMBERS_PROP_TYPES = PropTypes.arrayOf(MEMBER_PROP_TYPES);
+const MESSAGE_PROP_TYPES = PropTypes.shape({
+  id: PropTypes.string.isRequired,
+  senderId: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  value: PropTypes.shape({ content: PropTypes.string.isRequired }),
+  sentTime: PropTypes.string.isRequired,
+});
+const MESSAGES_PROP_TYPES = PropTypes.arrayOf(MESSAGE_PROP_TYPES);
 
 const StyledSenderAvatar = styled.div`
   --avatar-unit: 2.5rem;
@@ -19,6 +35,9 @@ const SenderAvatar = ({ sender }) => (
     {sender.nickname.substring(0, 1)}
   </StyledSenderAvatar>
 );
+SenderAvatar.propTypes = {
+  sender: MEMBER_PROP_TYPES,
+};
 
 const StyledSenderNickname = styled.div`
   font-size: 0.75rem;
@@ -30,6 +49,9 @@ const SenderNickname = ({ sender }) => (
     {sender.nickname}
   </StyledSenderNickname>
 );
+SenderNickname.propTypes = {
+  sender: MEMBER_PROP_TYPES,
+};
 
 const StyledMesasgeContent = styled.div`
   padding: var(--space-sm) var(--space-md);
@@ -39,6 +61,9 @@ const StyledMesasgeContent = styled.div`
 const MesasgeContent = ({ message }) => (
   <StyledMesasgeContent>{message.value.content}</StyledMesasgeContent>
 );
+MesasgeContent.propTypes = {
+  message: MESSAGE_PROP_TYPES,
+};
 
 const StyledMessageReadTime = styled.div`
   font-size: 0.75rem;
@@ -49,6 +74,9 @@ const StyledMessageReadTime = styled.div`
 const MessageReadTime = ({ message }) => (
   <StyledMessageReadTime>{formatTime(message.sentTime)}</StyledMessageReadTime>
 );
+MessageReadTime.propTypes = {
+  message: MESSAGE_PROP_TYPES,
+};
 
 const StyledMessage = styled.li`
   display: flex;
@@ -81,6 +109,10 @@ const Message = ({ members, message }) => {
     </StyledMessage>
   );
 };
+Message.propTypes = {
+  members: MEMBERS_PROP_TYPES,
+  message: MESSAGE_PROP_TYPES,
+};
 
 const StyledMessageList = styled.ul`
   flex-grow: 1;
@@ -100,5 +132,9 @@ const MessageList = ({ members, messages }) => (
     ))}
   </StyledMessageList>
 );
+MessageList.propTypes = {
+  members: MEMBERS_PROP_TYPES,
+  messages: MESSAGES_PROP_TYPES,
+};
 
 export default MessageList;

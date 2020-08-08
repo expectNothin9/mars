@@ -1,4 +1,5 @@
 import React, { useContext, useCallback, useState } from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 import gql from "graphql-tag";
 import { useMutation } from "@apollo/react-hooks";
@@ -31,6 +32,9 @@ const CloseButton = ({ handleOnClick }) => (
     <FASIcon name="times" />
   </StyledCloseButton>
 );
+CloseButton.propTypes = {
+  handleOnClick: PropTypes.func.isRequired,
+};
 
 const StyledEditChatroomSubjectForm = styled.form`
   padding: var(--space-lg);
@@ -115,6 +119,10 @@ const EditChatroomSubjectForm = ({ chatroomId, subject }) => {
       </footer>
     </StyledEditChatroomSubjectForm>
   );
+};
+EditChatroomSubjectForm.propTypes = {
+  chatroomId: PropTypes.string.isRequired,
+  subject: PropTypes.string.isRequired,
 };
 
 export default EditChatroomSubjectForm;

@@ -76,7 +76,7 @@ const StyledInputBar = styled.div`
     background: var(--mono-light);
   }
 `;
-const InputBar = ({ title = "Chatroom Title", memberCount = 9 }) => (
+const InputBar = () => (
   <StyledInputBar>
     <input type="text" placeholder="Aa" />
     <StickerButton />

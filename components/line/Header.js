@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 
 import FASIcon from "../common/FASIcon";
@@ -82,6 +83,11 @@ const ChatroomSubject = ({
     </StyledChatroomSubject>
   );
 };
+ChatroomSubject.propTypes = {
+  chatroomId: PropTypes.string.isRequired,
+  subject: PropTypes.string.isRequired,
+  members: PropTypes.array.isRequired,
+};
 
 const StyledHeader = styled.header`
   height: var(--h-unit);
@@ -104,5 +110,10 @@ const Header = ({
     <MenuButton />
   </StyledHeader>
 );
+Header.propTypes = {
+  chatroomId: PropTypes.string.isRequired,
+  subject: PropTypes.string.isRequired,
+  members: PropTypes.array.isRequired,
+};
 
 export default Header;

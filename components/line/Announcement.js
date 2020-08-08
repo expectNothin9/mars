@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 
 import FASIcon from "../common/FASIcon";
@@ -46,6 +47,9 @@ const AnnouncementContent = ({ title = "Announcement Content" }) => (
     <p>{title}</p>
   </StyledAnnouncementContent>
 );
+AnnouncementContent.propTypes = {
+  title: PropTypes.string.isRequired,
+};
 
 const StyledAnnouncement = styled.header`
   height: var(--h-unit);
