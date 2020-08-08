@@ -8,6 +8,7 @@
     "build": "next build",
     "start": "next start -p $PORT",
     "heroku-postbuild": "npm run build",
+    "lint": "eslint --ext .js components/** pages/** lib/** apollo/**",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -44,6 +45,21 @@
     "styled-components": "^5.1.1"
   },
   "devDependencies": {
-    "babel-plugin-styled-components": "^1.10.7"
+    "babel-plugin-styled-components": "^1.10.7",
+    "eslint": "^7.6.0",
+    "eslint-plugin-react": "^7.20.5",
+    "eslint-plugin-react-hooks": "^4.0.8",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.11"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }
