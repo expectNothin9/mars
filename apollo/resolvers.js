@@ -3,11 +3,11 @@ import GraphQLJSON from "graphql-type-json";
 export const resolvers = {
   JSON: GraphQLJSON,
   Query: {
-    weather: async (_parent, { location }, { dataSources }, _info) => {
+    weather: async (_parent, { location }, { dataSources }) => {
       const weather = await dataSources.weatherAPI.getWeather({ location });
       return weather;
     },
-    chatroom: async (_parent, { chatroomId }, { dataSources }, _info) => {
+    chatroom: async (_parent, { chatroomId }, { dataSources }) => {
       console.log(`resolve Query chatroom with chatroomId: ${chatroomId}`);
       const [chatroom, members, messages] = await Promise.all([
         dataSources.redisAPI.lineGetChatroom(chatroomId),
@@ -59,7 +59,7 @@ export const resolvers = {
         ],
       });
     },
-    redis: async (_parent, { key }, { dataSources }, _info) => {
+    redis: async (_parent, { key }, { dataSources }) => {
       const value = await dataSources.redisAPI.get(key);
       return value;
     },
@@ -68,8 +68,7 @@ export const resolvers = {
     saveChatroomSubject: async (
       _parent,
       { chatroomId, subject },
-      { dataSources },
-      _info
+      { dataSources }
     ) => {
       let chatroom = await dataSources.redisAPI.lineGetChatroom(chatroomId);
       if (!chatroom) {
@@ -82,7 +81,7 @@ export const resolvers = {
       );
       return resp.error ? resp : { chatroomId, subject };
     },
-    setRedis: async (_parent, { key, value }, { dataSources }, _info) => {
+    setRedis: async (_parent, { key, value }, { dataSources }) => {
       const resp = await dataSources.redisAPI.set(key, value);
       return resp;
     },
