@@ -1,6 +1,8 @@
+import React from "react";
+import PropTypes from "prop-types";
 import Head from "next/head";
 
-export default function CommonPage({ children }) {
+const CommonPage = ({ children }) => {
   return (
     <>
       <Head>
@@ -29,4 +31,12 @@ export default function CommonPage({ children }) {
       {children}
     </>
   );
-}
+};
+CommonPage.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
+};
+
+export default CommonPage;
