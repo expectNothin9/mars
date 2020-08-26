@@ -14,6 +14,10 @@ const Question = styled.p`
 `;
 const Answer = styled.p`
   margin: var(--space-md) 0 0;
+  opacity: 0;
+  &:hover {
+    opacity: 1;
+  }
 `;
 const TopicBox = styled.li`
   margin-top: var(--space-xl);
@@ -84,7 +88,7 @@ const TellMeALittleBitAboutYourself = () => (
         Recently I'm working on providing instant message feature to our
         e-commerce users. The user experience could be improved because of
         conversations between buyers and sellers became rapidly. We adopted
-        3rd-party IM SDK which has limited concurrent connections and API
+        3rd-party IM SDK which has limitation on concurrent connections and API
         requests. So we built a cluster mechanism based on localStorage to let
         browser tabs can share same connections and reduce API requests with
         3rd-party server.
@@ -163,11 +167,11 @@ const SufferedASetback = () => (
         maintain your enthusiasm?
       </Question>
       <Answer>
-        Yes. In the past, We have released a feature to user without our design
-        review and got many disappointing feedback. Sometimes we just want to
+        Yes. In the past, We have released a feature to user without the design
+        review and got many disappointing feedbacks. Sometimes we just want to
         fulfill the goal we established and forget the most important thing is
-        to create nice application with quality. After that, we keep this
-        lession in mind.
+        to create nice application with quality for our users. After that, we
+        keep this lession in mind. Check and double the quality of our features.
       </Answer>
     </QnaBox>
     <QnaBox>
@@ -175,13 +179,13 @@ const SufferedASetback = () => (
         Tell me about a time when you had to respond to a crisis.
       </Question>
       <Answer>
-        When there is a crisis happened, I will try to understand what is the
-        problem then contact with members should be involved. And we will create
-        a slack channel for discussing issues and sharing the information in
-        order to fix the problem ASAP. In the mean time, we also keep updating
-        the progress of the event to everyone. After the crisis has been
-        resolved, we will setup a meeting or send out a report to share the
-        experience and the follow-up tasks.
+        When there is a crisis happened, I always try to understand what is the
+        problem at first, then contact with members should be involved. And we
+        will create a slack channel for discussing issues and sharing the
+        information in order to fix the problem ASAP. In the mean time, we also
+        keep updating the progress of the event to everyone. After the crisis
+        has been resolved, we will setup a meeting or send out a report to share
+        the experience and the follow-up tasks.
       </Answer>
     </QnaBox>
   </TopicBox>
