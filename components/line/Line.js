@@ -61,7 +61,7 @@ const Line = () => {
       <StyledLine>
         <SystemBar />
         <Header chatroomId={id} subject={subject} members={members} />
-        <Announcement />
+        <Announcement title='ABC' />
         <MessageList members={members} messages={messages} />
         <Footer />
       </StyledLine>

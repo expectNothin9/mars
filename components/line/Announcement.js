@@ -41,7 +41,7 @@ const StyledAnnouncementContent = styled.div`
     line-height: var(--h-unit);
   }
 `;
-const AnnouncementContent = ({ title = "Announcement Content" }) => (
+const AnnouncementContent = ({ title }) => (
   <StyledAnnouncementContent>
     <FASIcon name="bullhorn" />
     <p>{title}</p>
@@ -55,11 +55,14 @@ const StyledAnnouncement = styled.header`
   height: var(--h-unit);
   display: flex;
 `;
-const Announcement = () => (
+const Announcement = ({ title }) => (
   <StyledAnnouncement>
-    <AnnouncementContent />
+    <AnnouncementContent title={title} />
     <ToggleButton />
   </StyledAnnouncement>
 );
+Announcement.propTypes = {
+  title: PropTypes.string.isRequired,
+};
 
 export default Announcement;
